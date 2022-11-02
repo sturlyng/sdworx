@@ -79,6 +79,16 @@ public class DrinkMachine implements Machine {
         }
     }
 
+    @Override
+    public void addNewItem(ProductImpl product) {
+        if (!this.products.containsKey(product.getCode())) {
+            this.products.put(product.getCode(), (Drink) product);
+            System.out.println(product.getName() + " added to the catalog");
+        } else {
+            System.out.println("Drink with code " + product.getCode() + " already exists");
+        }
+    }
+
     public Status getStatus() {
         return status;
     }

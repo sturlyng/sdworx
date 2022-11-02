@@ -93,6 +93,36 @@ public class DrinkMachineTest {
         Assertions.assertEquals(50, refundedMoney);
     }
 
+    @Test
+    void getStatusTest() {
+        Status status = defaultDrinkMachine.getStatus();
+
+        Assertions.assertEquals(Status.AVAILABLE, status);
+    }
+
+    @Test
+    void getStockTest() {
+        String stock = defaultDrinkMachine.getProductStock("DRINK01");
+
+        Assertions.assertEquals("10", stock);
+    }
+
+    @Test
+    void addNewDrinkTest() {
+        Drink drink = new Drink("Fanta", "DRINK05", 105, 15);
+        defaultDrinkMachine.addNewItem(drink);
+
+        Assertions.assertEquals(5, defaultDrinkMachine.getProducts().size());
+    }
+
+    @Test
+    void addAlreadyExistingDrinkTest() {
+        Drink drink = new Drink("Coca", "DRINK01", 100, 10);
+        defaultDrinkMachine.addNewItem(drink);
+
+        Assertions.assertEquals(4, defaultDrinkMachine.getProducts().size());
+    }
+
     static DrinkMachine createDefaultDrinkMachine() {
         Map<String, Drink> products = new HashMap<>();
         products.put("DRINK01", new Drink("Coca", "DRINK01", 100, 10));

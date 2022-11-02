@@ -10,5 +10,6 @@ public interface Machine {
     Integer refundChange(String productCode);
     Integer refundMoney();
     String getProductStock(String productCode);
+    void addNewItem(ProductImpl product);
 
 }
